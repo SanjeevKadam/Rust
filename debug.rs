@@ -166,3 +166,58 @@ For Developers	✅ Debugging/logging	❌ (Not ideal)
 For End Users	❌ Not elegant	✅ Clean, user-friendly
 Syntax	{:?}, {:#?}	{}
 
+--------
+
+Rust Formatting Overview
+Rust uses format strings and traits from the std::fmt module to print values in different ways.
+
+🔧 Common Macros
+Macro	Description
+format!	Returns the formatted string (like String::format)
+print!	Prints to standard output (no newline)
+println!	Prints to standard output with newline
+eprint!	Prints to standard error (no newline)
+eprintln!	Prints to standard error with newline
+
+🎨 Formatting Traits and Specifiers
+Each formatting style corresponds to a trait:
+
+Trait	Specifier	Example
+Display	{}	Human-readable format
+Debug	{:?}	Developer/debug-friendly
+UpperHex	{:X}	Uppercase hexadecimal
+LowerHex	{:x}	Lowercase hexadecimal
+Octal	{:o}	Octal format
+Binary	{:b}	Binary format
+Pointer	{:p}	Memory address format
+Scientific	{:e}	Scientific notation
+LowerExp	{:e}	e.g. 1.23e+03
+UpperExp	{:E}	e.g. 1.23E+03
+
+🧪 Example in Action
+rust
+Copy
+Edit
+fn main() {
+    let number: u32 = 3735928559;
+    
+    println!("{}", number);          // Display: 3735928559
+    println!("0x{:X}", number);      // UpperHex: 0xDEADBEEF
+    println!("0o{:o}", number);      // Octal: 0o33653337357
+    println!("{:b}", number);        // Binary: 11011110101011011011111011101111
+    println!("{:?}", number);        // Debug: 3735928559
+}
+🧵 Custom Types
+Display must be implemented manually:
+
+rust
+Copy
+Edit
+impl fmt::Display for MyType { ... }
+Debug can be auto-derived:
+
+rust
+Copy
+Edit
+#[derive(Debug)]
+struct MyType { ... }
