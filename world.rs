@@ -85,6 +85,11 @@ Uses format_args! to build the string.
 Uses print! to write to standard output with a newline.
 
 It’s compile-time checked, safe, and efficient.
+
+Bonus: Security and Performance
+No string injection issues like in C (printf), because everything is type-checked.
+
+Format string is not a runtime string — it’s compiled into the binary, making it safer and faster.
 */
 fn main(){
     let x=10;
